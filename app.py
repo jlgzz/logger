@@ -1,0 +1,3 @@
+import fn
+
+fn.saludo()
