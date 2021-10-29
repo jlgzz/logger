@@ -1,25 +1,22 @@
-import threading
-import requests
 
+import requests
+import time
 
 periodo= 1.0
 
-"""
-def printIt(renglon:str="hola"):
-    threading.Timer(periodo,printIt).start()
-    print(renglon)"""
-
-def get_data(url:str,parametro:str):
-    #request object
-    r=requests.get(url)
-
+def get_data(url:str,key:str):
+    r=requests.get(url) #request object
     if r.ok:
-        data=r.json()
-        #return(data)
-        valor=data[parametro]
-        return(valor)
+        data=r.json() #json to dict
+        valor=data[key]
+        return(valor,r.ok)
     else:
         return(r.status_code)
+
+def printIt(dato,status:bool):
+    while status:
+        time.sleep(periodo)
+        print(dato)
 
 """
 if  __name__=="__main__":
