@@ -1,9 +1,17 @@
 
 import requests
 import time
+import csv
 
 periodo= 1.0
 
+"""
+def addToCsv(dato):
+    with open('dataLog.csv',"a",newline="") as logFile:
+        writer=csv.writer(logFile)
+        writer.writerow(dato)
+
+"""
 def get_data(url:str,key:str):
     r=requests.get(url) #request object
     if r.ok:
@@ -16,6 +24,7 @@ def get_data(url:str,key:str):
 def printIt(dato,status:bool):
     while status:
         time.sleep(periodo)
+
         print(dato)
 
 """
